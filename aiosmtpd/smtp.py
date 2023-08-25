@@ -936,6 +936,7 @@ class SMTP(asyncio.StreamReaderProtocol):
             return await self.push('501 Too many values')
 
         mechanism = args[0]
+        mechanism = mechanism.upper()
         if mechanism not in self._auth_methods:
             return await self.push('504 5.5.4 Unrecognized authentication type')
 
